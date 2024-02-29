@@ -22,7 +22,7 @@ void main()
     }
     do
     {
-        printf("\n find the first of :");
+        printf("find the first of :");
         scanf("%c",&c);
         first(result,c);
         printf("\n First(%c)={ ",c);
@@ -50,16 +50,16 @@ void main()
        }
        for(i=0;i<numofp;i++)
       {
-        if(productionSet[i][0]==c)
+        if(pset[i][0]==c)
         {
-          if(productionSet[i][2]=='$') addToResultSet(Result,'$');
+          if(pset[i][2]=='$') addToResultSet(Result,'$');
           else
           {
               j=2;
-              while(productionSet[i][j]!='\0')
+              while(pset[i][j]!='\0')
               {
                  foundEpsilon=0;
-                 first(subResult,productionSet[i][j]);
+                 first(subResult,pset[i][j]);
                  for(k=0;subResult[k]!='\0';k++)
                  addToResultSet(Result,subResult[k]);
                  for(k=0;subResult[k]!='\0';k++)
@@ -79,3 +79,13 @@ void main()
     }
     return ;
 }
+void addToResultSet(char Result[],char val)
+{
+	int k;
+	for(k=0;Result[k]!='\0';k++)
+		if(Result[k]==val)
+		return;
+		Result[k]=val;
+		Result[k+1]='\0';
+}
+	
